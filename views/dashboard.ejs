@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome, <%= user.name %>!</h1>
+    <nav>
+      <a href="/goals">My Goals</a>
+      <a href="/logs">Daily Logs</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+  <main>
+    <section>
+      <h2>Your Goals</h2>
+      <p><a href="/goals">View and manage your goals</a></p>
+    </section>
+    <section>
+      <h2>Your Daily Logs</h2>
+      <p><a href="/logs">View and add your daily progress</a></p>
+    </section>
+  </main>
+</body>
+</html>

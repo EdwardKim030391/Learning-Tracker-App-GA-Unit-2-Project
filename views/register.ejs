@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+  <header>
+    <h1>Register for LearnTrack</h1>
+  </header>
+  <main>
+    <% if (error_msg) { %>
+      <p class="error"><%= error_msg %></p>
+    <% } %>
+    <form action="/register" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" name="password" required>
+
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a>.</p>
+  </main>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logs</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Your Daily Logs</h1>
+    <nav>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/goals">Goals</a>
+      <a href="/logout">Logout</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Add a New Log</h2>
+    <form action="/logs/add" method="POST">
+      <textarea name="content" placeholder="What did you learn today?" required></textarea>
+      <button type="submit">Add Log</button>
+    </form>
+
+    <h2>Your Logs</h2>
+    <% if (logs && logs.length > 0) { %>
+      <ul>
+        <% logs.forEach(log => { %>
+          <li>
+            <p><%= log.content %></p>
+            <small><%= log.date.toLocaleString() %></small>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No logs yet. Start adding your learning journey!</p>
+    <% } %>
+  </main>
+</body>
+</html>
