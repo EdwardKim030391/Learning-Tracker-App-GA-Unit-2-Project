@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Log</title>
+</head>
+<body>
+  <header>
+    <h1>Edit Log</h1>
+  </header>
+
+  <main>
+    <form action="/logs/edit/<%= log._id %>" method="POST">
+        <textarea name="content" rows="4" required><%= log.content %></textarea>
+        <input type="number" name="duration" value="<%= log.duration %>" min="1" max="1440" required>
+        <button type="submit">Save Changes</button>
+      </form>
+  </main>
+</body>
+</html>

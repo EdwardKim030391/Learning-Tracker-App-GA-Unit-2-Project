@@ -17,15 +17,7 @@
   </header>
 
   <main>
-    <h2>Add a New Goal</h2>
-    <form action="/goals/add" method="POST">
-      <input type="text" name="title" placeholder="Goal Title" required>
-      <textarea name="description" placeholder="Description"></textarea>
-      <input type="date" name="deadline">
-      <button type="submit">Add Goal</button>
-    </form>
-
-    <h2>Your Goals</h2>
+   <h2>Your Goals</h2>
     <% if (goals && goals.length > 0) { %>
       <ul>
         <% goals.forEach(goal => { %>
@@ -33,6 +25,7 @@
             <h3><%= goal.title %></h3>
             <p><%= goal.description %></p>
             <small>Deadline: <%= goal.deadline ? goal.deadline.toDateString() : 'No deadline' %></small>
+            <a href="/goals/edit/<%= goal._id %>"><button type="submit">Edit</button></a>
             <form action="/goals/delete/<%= goal._id %>" method="POST" style="display:inline;">
               <button type="submit">Delete</button>
             </form>
@@ -42,7 +35,14 @@
     <% } else { %>
       <p>No goals yet. Start setting your goals!</p>
     <% } %>
+
+    <h2>Add a New Goal</h2>
+    <form action="/goals/add" method="POST">
+      <input type="text" name="title" placeholder="Goal Title" required>
+      <textarea name="description" placeholder="Description"></textarea>
+      <input type="date" name="deadline">
+      <button type="submit">Add Goal</button>
+    </form>
   </main>
 </body>
 </html>
-

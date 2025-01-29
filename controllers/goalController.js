@@ -38,3 +38,26 @@ exports.deleteGoal = async (req, res) => {
     res.redirect('/goals');
   }
 };
+
+exports.editGoalForm = async (req, res) => {
+  try {
+    const goal = await Goal.findById(req.params.id);
+    res.render('editGoal', { goal });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};
+
+exports.updateGoal = async (req, res) => {
+  try {
+    const { title, description, deadline } = req.body;
+  
+    const parsedDeadline = new Date(deadline);
+    await Goal.findByIdAndUpdate(req.params.id, { title, description, deadline: parsedDeadline });
+    res.redirect('/goals');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
+};

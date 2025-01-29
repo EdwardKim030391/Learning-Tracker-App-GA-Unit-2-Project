@@ -22,8 +22,16 @@ router.get('/dashboard', ensureAuthenticated, (req, res) =>
 router.get('/goals', ensureAuthenticated, goalController.getGoals);
 router.post('/goals/add', ensureAuthenticated, goalController.addGoal);
 router.post('/goals/delete/:id', ensureAuthenticated, goalController.deleteGoal);
+router.get('/goals/edit/:id', ensureAuthenticated, goalController.editGoalForm);
+router.post('/goals/edit/:id', ensureAuthenticated, goalController.updateGoal);
 
 router.get('/logs', ensureAuthenticated, logController.getLogs);
-router.post('/logs/add', ensureAuthenticated, logController.addLog);
+router.post('/logs', ensureAuthenticated, logController.addLog);
+router.post('/logs/delete/:id', ensureAuthenticated, logController.deleteLog);
+// Log 수정
+router.get('/logs/edit/:id', ensureAuthenticated, logController.editLogForm);
+router.post('/logs/edit/:id', ensureAuthenticated, logController.updateLog);
+
+router.get('/logs/stats', ensureAuthenticated, logController.getLogStats);
 
 module.exports = router;

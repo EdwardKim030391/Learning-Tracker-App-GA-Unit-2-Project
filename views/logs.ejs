@@ -3,39 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Logs</title>
-  <link rel="stylesheet" href="/styles.css">
+  <title>Your Logs</title>
 </head>
 <body>
   <header>
     <h1>Your Daily Logs</h1>
     <nav>
       <a href="/dashboard">Dashboard</a>
-      <a href="/goals">Goals</a>
       <a href="/logout">Logout</a>
     </nav>
   </header>
 
   <main>
-    <h2>Add a New Log</h2>
-    <form action="/logs/add" method="POST">
-      <textarea name="content" placeholder="What did you learn today?" required></textarea>
-      <button type="submit">Add Log</button>
-    </form>
-
     <h2>Your Logs</h2>
-    <% if (logs && logs.length > 0) { %>
+    <% if (Array.isArray(logs) && logs.length > 0) { %>
       <ul>
         <% logs.forEach(log => { %>
           <li>
-            <p><%= log.content %></p>
-            <small><%= log.date.toLocaleString() %></small>
+            <%= log.content %> - <%= log.duration %> minutes
+            (Created on: <%= log.createdAt ? new Date(log.createdAt).toLocaleDateString() : 'Unknown' %>) (<%= log.category %>)
+
+            <a href="/logs/edit/<%= log._id %>"><button type="submit">Edit</button></a>
+            <form action="/logs/delete/<%= log._id %>" method="POST" style="display:inline;">
+              <button type="submit">Delete</button>
+            </form>
           </li>
         <% }) %>
       </ul>
     <% } else { %>
-      <p>No logs yet. Start adding your learning journey!</p>
+      <p>No logs found. Add one below!</p>
     <% } %>
+
+    <h3>Add a New Log</h3>
+    <form action="/logs" method="POST">
+      <textarea
+        name="content"
+        rows="4"
+        maxlength="500"
+        placeholder="Write your log here (max 500 characters)..."
+        required>
+      </textarea>
+
+        <select name="category" required>
+          <option value="English">English</option>
+          <option value="Math">Math</option>
+          <option value="Science">Science</option>
+          <option value="Computer">Computer</option>
+        </select>
+      <input
+        type="number"
+        name="duration"
+        min="1"
+        max="1440"
+        placeholder="Duration in minutes"
+        required>
+      <button type="submit">Add Log</button>
+    </form>
   </main>
+
+<select id="periodSelect">
+  <option value="daily">Daily</option>
+  <option value="weekly">Weekly</option>
+  <option value="monthly">Monthly</option>
+</select>
+
+<canvas id="logChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/chart.js"></script>
+
 </body>
 </html>
