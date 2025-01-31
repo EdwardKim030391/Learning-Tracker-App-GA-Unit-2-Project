@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Log</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <header>
+  <main class="edit-container">
     <h1>Edit Log</h1>
-  </header>
-
-  <main>
     <form action="/logs/edit/<%= log._id %>" method="POST">
         <textarea name="content" rows="4" required><%= log.content %></textarea>
         <input type="number" name="duration" value="<%= log.duration %>" min="1" max="1440" required>
         <button type="submit">Save Changes</button>
-      </form>
+    </form>
+    <a href="/logs" class="cancel-btn">Cancel</a>
   </main>
 </body>
 </html>
+

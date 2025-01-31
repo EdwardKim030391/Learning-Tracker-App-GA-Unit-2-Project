@@ -1,96 +1,298 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-  }
-
-  header {
-    background: #333;
-    color: #fff;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 50px;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 2;
 }
 
-  nav a {
-    color: #fff;
-    margin: 0 1rem;
-    text-decoration: none;
-  }
-
-  main {
-    padding: 2rem;
-  }
-
-  form label {
-    display: block;
-    margin: 0.5rem 0 0.2rem;
-  }
-
-  form input, form button {
-    display: block;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    width: 100%;
-  }
-
-  .btn {
-    background: #007BFF;
-    color: white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    display: inline-block;
-    margin: 1rem 0;
-  }
-
-  .error {
-    color: red;
-  }
-
-  .text-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.illustration {
-  width: 150px;
-  height: 150px;
+header h1 {
+  color: white;
 }
 
-.main-content {
+nav {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  color: #ffdd57;
 }
 
 .auth-links {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .auth-links .btn {
-  padding: 10px 20px;
-  background-color: #4CAF50;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #ff7eb3, #ff758c);
   color: white;
   text-decoration: none;
-  border-radius: 5px;
-  text-align: center;
-  font-size: 1.1em;
-  width: 150px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(255, 118, 143, 0.3);
 }
 
 .auth-links .btn:hover {
-  background-color: #45a049;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 118, 143, 0.5);
+}
+
+main {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #333;
+}
+
+.dashboard-link {
+  display: inline-block;
+  background: #007BFF;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.goal-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.goal-card {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-left: 5px solid #007BFF;
+  transition: all 0.3s ease-in-out;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.goal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.goal-info {
+  flex-grow: 1;
+}
+
+.goal-info h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.goal-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.goal-info small {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.goal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.log-table thead {
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+.log-table th, .log-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.log-table tbody td {
+  vertical-align: middle;
+}
+
+.log-table tbody tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+.log-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.log-actions .btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+}
+
+.btn {
+  background: #007BFF;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.delete-btn {
+  background: red;
+}
+
+.delete-btn:hover {
+  background: darkred;
+}
+
+.empty-message {
+  text-align: center;
+  font-style: italic;
+  color: gray;
+}
+
+.edit-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.edit-container h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.edit-container input,
+.edit-container textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.edit-container button {
+  background: #007BFF;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.edit-container button:hover {
+  background: #0056b3;
+}
+
+.cancel-btn {
+  display: inline-block;
+  background: #dc3545;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.cancel-btn:hover {
+  background: #b02a37;
+}
+
+@media (max-width: 768px) {
+  header {
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+  }
+
+  nav {
+      flex-direction: column;
+      gap: 10px;
+  }
+
+  .auth-links {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+  }
 }

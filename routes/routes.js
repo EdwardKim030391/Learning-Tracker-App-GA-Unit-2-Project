@@ -28,7 +28,7 @@ router.post('/goals/edit/:id', ensureAuthenticated, goalController.updateGoal);
 router.get('/logs', ensureAuthenticated, logController.getLogs);
 router.post('/logs', ensureAuthenticated, logController.addLog);
 router.post('/logs/delete/:id', ensureAuthenticated, logController.deleteLog);
-// Log 수정
+
 router.get('/logs/edit/:id', ensureAuthenticated, logController.editLogForm);
 router.post('/logs/edit/:id', ensureAuthenticated, logController.updateLog);
 

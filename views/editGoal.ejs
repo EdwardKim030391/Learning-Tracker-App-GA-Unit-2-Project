@@ -4,19 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Goal</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-  <header>
+  <main class="edit-container">
     <h1>Edit Goal</h1>
-  </header>
-
-  <main>
     <form action="/goals/edit/<%= goal._id %>" method="POST">
         <input type="text" name="title" value="<%= goal.title %>" required>
         <textarea name="description" rows="4" required><%= goal.description %></textarea>
-        <input type="date" name="deadline" value="<%= new Date(goal.deadline).toISOString().split('T')[0] %>" required> <!-- 날짜 필드 추가 -->
+        <input type="date" name="deadline" value="  <%= goal.deadline
+        ? new Date(goal.deadline).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'long', day: 'numeric'
+          })
+        : 'No deadline'
+   %>" required>
         <button type="submit">Save Changes</button>
-      </form>
+    </form>
+    <a href="/goals" class="cancel-btn">Cancel</a>
   </main>
 </body>
 </html>

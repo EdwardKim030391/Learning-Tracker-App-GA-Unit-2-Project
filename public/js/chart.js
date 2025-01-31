@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = await response.json();
 
         if (!Array.isArray(data)) {
-            throw new Error("❌ 서버에서 받은 데이터가 배열이 아닙니다!");
+            throw new Error("err");
         }
-
         return {
             labels: data.map(d => d._id || "Unknown"),
             values: data.map(d => d.totalHours || 0)
@@ -22,7 +21,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const { labels, values } = await fetchData(period);
 
       if (chart) chart.destroy();
-
       chart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -30,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
           datasets: [{
             label: `Hours spent (${period})`,
             data: values,
-            backgroundColor: 'rgba(75, 192, 192, 0.6)'
+            backgroundColor: 'rgba(75, 190, 190, 0.5)'
           }]
         }
       });

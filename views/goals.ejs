@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Goals</title>
-  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
   <header>
@@ -16,33 +16,42 @@
     </nav>
   </header>
 
-  <main>
-   <h2>Your Goals</h2>
+  <main class="container">
+    <h2>🎯 Your Goals</h2>
     <% if (goals && goals.length > 0) { %>
-      <ul>
+      <div class="goal-list">
         <% goals.forEach(goal => { %>
-          <li>
-            <h3><%= goal.title %></h3>
-            <p><%= goal.description %></p>
-            <small>Deadline: <%= goal.deadline ? goal.deadline.toDateString() : 'No deadline' %></small>
-            <a href="/goals/edit/<%= goal._id %>"><button type="submit">Edit</button></a>
-            <form action="/goals/delete/<%= goal._id %>" method="POST" style="display:inline;">
-              <button type="submit">Delete</button>
-            </form>
-          </li>
+          <div class="goal-card">
+            <div class="goal-info">
+              <h3><%= goal.title %></h3>
+              <p><%= goal.description %></p>
+              <small>📅 Deadline:   <%= goal.deadline
+                ? new Date(goal.deadline).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                  })
+                : 'No deadline'
+           %></small>
+            </div>
+            <div class="goal-actions">
+              <a href="/goals/edit/<%= goal._id %>" class="btn edit-btn">✏️ Edit</a>
+              <form action="/goals/delete/<%= goal._id %>" method="POST">
+                <button type="submit" class="btn delete-btn">🗑️ Delete</button>
+              </form>
+            </div>
+          </div>
         <% }) %>
-      </ul>
+      </div>
     <% } else { %>
-      <p>No goals yet. Start setting your goals!</p>
+      <p class="empty-message">🚀 No goals yet. Start setting your goals!</p>
     <% } %>
 
-    <h2>Add a New Goal</h2>
-    <form action="/goals/add" method="POST">
-      <input type="text" name="title" placeholder="Goal Title" required>
-      <textarea name="description" placeholder="Description"></textarea>
-      <input type="date" name="deadline">
-      <button type="submit">Add Goal</button>
-    </form>
+        <h3>➕ Add a New Goal</h3>
+        <form action="/goals/add" method="POST">
+          <input type="text" name="title" placeholder="Goal Title" required>
+          <textarea name="description" placeholder="Description"></textarea>
+          <input type="date" name="deadline" value="" required>
+          <button type="submit" class="btn">➕ Add Goal</button>
+        </form>
   </main>
 </body>
 </html>

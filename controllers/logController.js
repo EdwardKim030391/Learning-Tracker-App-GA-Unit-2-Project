@@ -1,9 +1,15 @@
 const Log = require('../models/Log');
 
-
 exports.getLogs = async (req, res) => {
   try {
     const logs = await Log.find({ user: req.user._id });
+
+    logs.forEach(log => {
+      if (log.createdAt) {
+        log.localCreatedAt = new Date(log.createdAt.getTime() - log.createdAt.getTimezoneOffset() * 60000);
+      }
+    });
+
     res.render('logs', { logs });
   } catch (err) {
     console.error(err);
@@ -33,7 +39,6 @@ exports.addLog = async (req, res) => {
     res.status(500).send('Server Error');
   }
 };
-
 
 exports.deleteLog = async (req, res) => {
   try {

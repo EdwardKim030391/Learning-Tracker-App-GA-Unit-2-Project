@@ -3,6 +3,13 @@ const Goal = require('../models/Goal');
 exports.getGoals = async (req, res) => {
   try {
     const goals = await Goal.find({ user: req.user.id });
+
+    goals.forEach(goal => {
+      if (goal.deadline) {
+        goal.deadlineLocal = new Date(goal.deadline.getTime() - goal.deadline.getTimezoneOffset() * 60000);
+      }
+    });
+
     res.render('goals', { goals });
   } catch (error) {
     console.error(error);
@@ -52,7 +59,7 @@ exports.editGoalForm = async (req, res) => {
 exports.updateGoal = async (req, res) => {
   try {
     const { title, description, deadline } = req.body;
-  
+
     const parsedDeadline = new Date(deadline);
     await Goal.findByIdAndUpdate(req.params.id, { title, description, deadline: parsedDeadline });
     res.redirect('/goals');

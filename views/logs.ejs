@@ -4,73 +4,75 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Logs</title>
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
   <header>
     <h1>Your Daily Logs</h1>
     <nav>
       <a href="/dashboard">Dashboard</a>
+      <a href="/goals">Goals</a>
       <a href="/logout">Logout</a>
     </nav>
   </header>
 
-  <main>
-    <h2>Your Logs</h2>
+  <main class="container">
+    <h2>📜 Your Logs</h2>
     <% if (Array.isArray(logs) && logs.length > 0) { %>
-      <ul>
-        <% logs.forEach(log => { %>
-          <li>
-            <%= log.content %> - <%= log.duration %> minutes
-            (Created on: <%= log.createdAt ? new Date(log.createdAt).toLocaleDateString() : 'Unknown' %>) (<%= log.category %>)
-
-            <a href="/logs/edit/<%= log._id %>"><button type="submit">Edit</button></a>
-            <form action="/logs/delete/<%= log._id %>" method="POST" style="display:inline;">
-              <button type="submit">Delete</button>
-            </form>
-          </li>
-        <% }) %>
-      </ul>
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>📖 Content</th>
+            <th>⏳ Duration</th>
+            <th>📂 Category</th>
+            <th>📅 Date</th>
+            <th>🛠️ Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% logs.forEach(log => { %>
+            <tr>
+              <td><%= log.content %></td>
+              <td><%= log.duration %>(min)</td>
+              <td><%= log.category %></td>
+              <td><%= log.createdAt ? new Date(log.createdAt).toLocaleDateString() : 'Unknown' %></td>
+              <td class="log-actions">
+                <a href="/logs/edit/<%= log._id %>" class="btn edit-btn">✏️ Edit</a>
+                <form action="/logs/delete/<%= log._id %>" method="POST">
+                  <button type="submit" class="btn delete-btn">🗑️ Delete</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
     <% } else { %>
-      <p>No logs found. Add one below!</p>
+      <p class="empty-message">📝 No logs found. Add one below!</p>
     <% } %>
 
-    <h3>Add a New Log</h3>
-    <form action="/logs" method="POST">
-      <textarea
-        name="content"
-        rows="4"
-        maxlength="500"
-        placeholder="Write your log here (max 500 characters)..."
-        required>
-      </textarea>
-
-        <select name="category" required>
-          <option value="English">English</option>
-          <option value="Math">Math</option>
-          <option value="Science">Science</option>
-          <option value="Computer">Computer</option>
-        </select>
-      <input
-        type="number"
-        name="duration"
-        min="1"
-        max="1440"
-        placeholder="Duration in minutes"
-        required>
-      <button type="submit">Add Log</button>
+    <h3>➕Add a New Log</h3>
+    <form action="/logs" method="POST" class="log-form">
+      <textarea name="content" rows="4" maxlength="500" placeholder="Write your log here..." required></textarea>
+      <select name="category" required>
+        <option value="English">English</option>
+        <option value="Math">Math</option>
+        <option value="Science">Science</option>
+        <option value="Computer">Computer</option>
+      </select>
+      <input type="number" name="duration" min="1" max="1440" placeholder="Duration in minutes" required>
+      <button type="submit" class="btn">➕ Add Log</button>
     </form>
+
+    <h3>📊 Progress Chart</h3>
+    <select id="periodSelect">
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+    </select>
+    <canvas id="logChart"></canvas>
   </main>
-
-<select id="periodSelect">
-  <option value="daily">Daily</option>
-  <option value="weekly">Weekly</option>
-  <option value="monthly">Monthly</option>
-</select>
-
-<canvas id="logChart"></canvas>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/chart.js"></script>
-
 </body>
 </html>
