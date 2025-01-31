@@ -2,8 +2,7 @@
 #### Created by Edward Kim
 
 ## 📚Description
-[Click here]
-
+[Click here](https://learning-tracker-app-515476c4b302.herokuapp.com/)
 
 
 
@@ -12,12 +11,8 @@
 
   |   Description | Screenshot | 
   |:-------------:| -----------|
-  | <h3>Feed Page</h3> | <imgsrc="https://github.com/amarpan/meet-your-classmates/blob/main/public/Screenshots/FeedPage.png?raw=true"
-    width="700"/> |
-  | <h3 align="center">Profile Page</h3> | <img
-  src="https://github.com/amarpan/meet-your-classmates/raw/main/public/Screenshots/ProfilePage.png"
-  width="700"
-  /> |
+  | <h3>Main Page</h3> | <img src='https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/homepage.png />
+
 
 
 **How to Use**
