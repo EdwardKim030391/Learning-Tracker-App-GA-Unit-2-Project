@@ -1,25 +1,46 @@
-## Learning Tracker App
+## 👨‍🎓Learning Tracker App
 #### Created by Edward Kim
 
 ## 📚Description
-[Click here](https://learning-tracker-app-515476c4b302.herokuapp.com/)
+The Learning Tracker App is designed to help users set learning goals, log daily study sessions, and visualize their progress through charts. This application provides an easy way to track learning activities. [Click here](https://learning-tracker-app-515476c4b302.herokuapp.com/)
 
 
 
 ## 📸Screenshots
-  ## :camera_flash: Screenshots 
-
   |   Description | Screenshot | 
   |:-------------:| -----------|
-  | <h3>Main Page</h3> | <img src='https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/homepage.png />
+  | <h3>Main Page</h3> | ![screenshot1](https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/homepage.png)  
+  | <h3>Dash Board</h3> | ![screenshot2](https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/dashboard.png)
+  | <h3>Goal Page</h3> | ![screenshot3](https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/goal.png)
+  | <h3>Log Page</h3> | ![screenshot4](https://github.com/EdwardKim030391/Learning-Tracker-App-GA-Unit-2-Project/blob/main/public/image/log.png)  
 
 
+## How to Use
+1. Sign Up / Log In
+   
+*  Create an account or log in to access your dashboard.
 
-**How to Use**
 
+2. Set Goals
 
-**Planning Material**
-[Planning](https://trello.com/b/MKsdgr2a/learning-tracker-app)
+*  Go to the "Goals" section.
+*  Click "Add a New Goal" to create a learning objective with a title, description, and deadline.
+
+3. Log Daily Progress
+
+*  Go to the "Logs" section.
+*  Click "Add a New Log" entry specifying the study category, content, and duration.
+
+4. View Progress
+
+*  Check the "Progress Chart" to see study trends over time.
+
+5. Edit or Delete Goals and Logs
+
+*  Edit or Delete goals and logs as needed to keep your progress organized.
+
+## Planning Material
+[Here](https://trello.com/b/MKsdgr2a/learning-tracker-app)
 
 
 ## 💻Technologies Used
@@ -37,3 +58,6 @@
 ![VSCode](https://img.shields.io/badge/-VS_Code-05122A?style=flat&logo=visualstudio)
 
 ## 🎉Upcoming Features
+1. Progress Streaks – Track consecutive days of logging activities.
+2. Goal Reminders & Notifications – Get alerts before deadlines.
+3. Advanced Charts & Reports – More detailed insights on progress
